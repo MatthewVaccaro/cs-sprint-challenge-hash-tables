@@ -1,8 +1,16 @@
 def intersection(arrays):
-    """
-    YOUR CODE HERE
-    """
-    # Your code here
+    cache = {}
+    goal = len(arrays)
+    result = []
+
+    for arrIndex, arr in enumerate(arrays):
+        for num in arr:
+            if num not in cache:
+                cache[num] = [arrIndex]
+            else:
+                cache[num].append(arrIndex)
+                if len(cache[num]) == goal:
+                    result.append(num)
 
     return result
 
