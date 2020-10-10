@@ -6,9 +6,23 @@ class Ticket:
 
 
 def reconstruct_trip(tickets, length):
-    """
-    YOUR CODE HERE
-    """
-    # Your code here
+    # Create the expected array to be returned
+    current = [ticket for ticket in tickets if ticket.source == "NONE"]
+    results = [current[0].destination]
+    while len(tickets) > 0:
 
-    return route
+        for ticket in tickets:
+            if len(tickets) == 1:
+                results.append(ticket.destination)
+
+            if current[0].destination == ticket.source:
+                results.append(ticket.destination)
+                current = [ticket]
+                tickets.remove(ticket)
+    
+    print("----------", results)
+    return results
+
+
+    # If true append to array
+    # Return array current
